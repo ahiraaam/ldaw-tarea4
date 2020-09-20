@@ -8,4 +8,8 @@ router.post("/tasks", tasksController.store);
 
 router.post("/changeStatus/:id", tasksController.changeStatus);
 
+router.post("/changeStatus", tasksController.changeStatusAjax);
+
+router.post("/deleteTask", tasksController.deleteTask);
+
 module.exports = router;

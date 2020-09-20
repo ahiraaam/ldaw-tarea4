@@ -26,3 +26,28 @@ exports.changeStatus = (req, res) => {
     }*/
   });
 };
+
+exports.changeStatusAjax = (req, res) => {
+  let taskId = req.body.id;
+  console.log("taskid", taskId);
+  Task.changeStatus(taskId).then((id) => {
+    console.log("Task updated with id: ", id);
+    if (req.xhr || req.headers.accept.indexOf("json") > -1) {
+      Task.find(id).then((task) => res.json(task));
+    } else {
+      res.redirect("/");
+    }
+  });
+};
+
+exports.deleteTask = (req, res) => {
+  let id = req.body.id;
+  Task.delete(id).then((id) => {
+    console.log("Task deleted with id: ", id);
+    if (req.xhr || req.headers.accept.indexOf("json") > -1) {
+      res.json(id);
+    } else {
+      res.redirect("/");
+    }
+  });
+};

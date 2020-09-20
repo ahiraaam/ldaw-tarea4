@@ -23,10 +23,9 @@
         <div class="card-body">
           <p class="card-text">{{ description }}</p>
           {{#eq status 'pending'}}
-          <form action="/changeStatus/{{id}}" method="POST">
-            <button type="submit" class="card-link">Done</button>
-          </form>
+          <a href="javascript:;" onclick="changeStatus({{id}});" class="card-link">Done</a>
           {{/eq}}
+          <a href="javascript:;" onclick="deleteTask({{id}});" class="card-link">Delete</a>
         </div>
       </div>
       {{/each}}
