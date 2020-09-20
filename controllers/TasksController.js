@@ -14,9 +14,10 @@ exports.store = (req, res) => {
 };
 
 exports.changeStatus = (req, res) => {
-  let taskId = req.body.id;
+  let taskId = req.params.id;
+  console.log(taskId);
   Task.changeStatus(taskId).then((id) => {
-    console.log("Task updated with id: ", id);
+    console.log("Task updated with id: ", taskId);
     res.redirect("/");
     /*if (req.xhr || req.headers.accept.indexOf("json") > -1) {
       Task.find(id).then((task) => res.json(task));
