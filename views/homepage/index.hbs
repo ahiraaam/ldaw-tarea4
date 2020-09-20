@@ -8,12 +8,7 @@
     <div class="col-lg-12">
       <form class="form-inline" action="/tasks" method="POST">
         <div class="input-group w-100">
-          <input
-            id="task_description"
-            type="text"
-            name="description"
-            placeholder="I have to..."
-            class="form-control">
+          <input id="task_description" type="text" name="description" placeholder="I have to..." class="form-control">
           <div class="input-group-append">
             <input type="button" value="Add" class="btn btn-primary" onclick="storeTask()">
           </div>
@@ -24,11 +19,13 @@
   <div class="row">
     <div class="col-lg-12" id="task_list">
       {{#each tasks}}
-      <div class="card my-3 {{#eq status 'done' }}bg-light{{/eq}}">
+      <div id={{id}} class="card my-3 {{#eq status 'done' }}bg-light{{/eq}}">
         <div class="card-body">
           <p class="card-text">{{ description }}</p>
           {{#eq status 'pending'}}
-            <a href="#" class="card-link">Done</a>
+          <form action="/changeStatus" method="POST">
+            <button type="submit" class="card-link">Done</button>
+          </form>
           {{/eq}}
         </div>
       </div>
