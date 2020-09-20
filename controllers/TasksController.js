@@ -28,12 +28,11 @@ exports.changeStatus = (req, res) => {
 };
 
 exports.changeStatusAjax = (req, res) => {
-  let taskId = req.body.id;
-  console.log("taskid", taskId);
-  Task.changeStatus(taskId).then((id) => {
-    console.log("Task updated with id: ", id);
+  let id = req.body.id;
+  console.log("taskid", id);
+  Task.changeStatus(id).then((task) => {
     if (req.xhr || req.headers.accept.indexOf("json") > -1) {
-      Task.find(id).then((task) => res.json(task));
+      res.json({ id: id });
     } else {
       res.redirect("/");
     }

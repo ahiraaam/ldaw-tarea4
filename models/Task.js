@@ -15,7 +15,7 @@ exports.find = (id) => {
 };
 
 exports.changeStatus = (id) => {
-  return knex("tasks").where("id", id).update({ status: "done" });
+  return knex("tasks").update({ status: "done" }).where("id", id);
 };
 
 exports.delete = (id) => {
